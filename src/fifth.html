@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fourth episode</title>
+
+    <script type="text/javascript" src="../webroot/js/vue.js"></script>
+    <style type="text/css">
+        h1.heading {
+            font-size: 24px;
+            font-family: serif;
+        }
+        h1.heading.red {
+            color: red;
+        }
+        h1.heading.blue {
+            color: blue;
+        }
+        button.is-loading {
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="example">
+        <h1 v-bind:class="className">Hello World!</h1>
+        <button v-bind:title="title" v-bind:disabled="isDisabled" v-bind:class="{ 'is-loading': isLoading }" v-on:click="toggleDisabled">Hover over me</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#example',
+            data: {
+                title: 'The new title',
+                className: 'heading red',
+                isLoading: false,
+                isDisabled: false
+            },
+            methods: {
+                toggleClass() {
+                    this.isLoading = true;
+                },
+                toggleDisabled() {
+                    this.isDisabled = true;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
