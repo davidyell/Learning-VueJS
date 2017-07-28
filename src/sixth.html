@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sixth episode</title>
+
+    <script type="text/javascript" src="../webroot/js/vue.js"></script>
+
+    <style type="text/css">
+        #example > ul li{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="example">
+        <h1>{{ reversedMessage }}</h1>
+
+        <ul>
+            <li v-for="(task, index) in tasks" v-on:click="toggleCompleted" v-bind:id="index">
+                {{ task.description }}
+                <span v-if="task.completed">&#10004;</span>
+                <span v-if="!task.completed">&#10008;</span>
+            </li>
+        </ul>
+
+        <h1>Incomplete tasks</h1>
+
+        <ul>
+            <li v-for="task in incompleteTasks" v-text="task.description"></li>
+        </ul>
+
+        <h1>Complete tasks</h1>
+
+        <ul>
+            <li v-for="task in completeTasks" v-text="task.description"></li>
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#example',
+            data: {
+                message: 'All Tasks',
+                tasks: [
+                    { description: 'Go to the store', completed: true },
+                    { description: 'Finish screenshot', completed: false },
+                    { description: 'Make donation', completed: false },
+                    { description: 'Clear inbox', completed: false },
+                    { description: 'Make lunch', completed: false },
+                    { description: 'Tidy desk', completed: true },
+                ]
+            },
+            methods: {
+                toggleCompleted(event) {
+                    if (this.tasks[event.target.id].completed) {
+                        this.tasks[event.target.id].completed = false;
+                    } else {
+                        this.tasks[event.target.id].completed = true;
+                    }
+                }
+            },
+            computed: {
+                reversedMessage() {
+                    return this.message.split('').reverse().join('');
+                },
+                incompleteTasks() {
+                    // ES6 / ES2015 syntax
+                    return this.tasks.filter(task => !task.completed);
+                },
+                completeTasks() {
+                    return this.tasks.filter(task => task.completed);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
