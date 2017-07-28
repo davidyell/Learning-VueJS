@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fourth episode</title>
+
+    <script type="text/javascript" src="../webroot/js/vue.js"></script>
+</head>
+<body>
+
+    <div id="example">
+        <ul>
+            <li v-for="name in names">{{ name }}</li>
+        </ul>
+
+        <form>
+            <input type="text" id="name-to-add" v-model="newName">
+            <input type="button" id="add-name" value="Add name" v-on:click="addName">
+        </form>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#example',
+            data: {
+                newName: '',
+                names: ['Joe', 'John', 'Jack', 'Jenette', 'Jenny']
+            },
+            methods: {
+                addName() {
+                    this.names.push(this.newName);
+                    this.newName = '';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
