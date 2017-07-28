@@ -8,7 +8,19 @@ Vue.component('telesales-number', {
 });
 
 Vue.component('sales-table', {
-    template: '<table summary="sales-table" cellspacing="0" cellpadding="0"><thead><tr><th>Date</th><th>Sales</th></tr></thead><tbody><tr v-for="sale in salesData"><td>{{ sale.date }}</td><td>{{ sale.sales | numberFormat }}</td></tr></tbody></table>',
+    template: `
+        <table summary="sales-table" cellspacing="0" cellpadding="0">
+        <thead><tr>
+            <th>Date</th>
+            <th>Sales</th>
+        </tr></thead>
+        <tbody>
+            <tr v-for="sale in salesData">
+                <td>{{ sale.date }}</td>
+                <td>{{ sale.sales | numberFormat }}</td>
+            </tr>
+        </tbody>
+        </table>`,
     data: function() {
         return {
             salesData: [
