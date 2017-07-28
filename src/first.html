@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First episode</title>
+
+    <script type="text/javascript" src="../webroot/js/vue.min.js"></script>
+</head>
+<body>
+
+    <form id="example">
+        <input type="text" id="message" v-model="message">
+        <p>The value of the input is: {{ message }}</p>
+    </form>
+
+    <script type="text/javascript">
+        new Vue({
+            el: '#example',
+            data: {
+                message: 'Hello world!'
+            }
+        });
+    </script>
+</body>
+</html>
