@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Third episode</title>
+
+    <script type="text/javascript" src="../webroot/js/vue.js"></script>
+</head>
+<body>
+
+    <div id="example">
+        <ul>
+            <li v-for="name in names">{{ name }}</li>
+        </ul>
+
+        <form>
+            <input type="text" id="name-to-add">
+            <input type="button" id="add-name" value="Add name">
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#example',
+            data: {
+                names: ['Joe', 'John', 'Jack', 'Jenette', 'Jenny']
+            }
+        });
+
+        document.querySelector('#add-name').addEventListener('click', () => {
+            var name = document.querySelector('#name-to-add');
+            app.names.push(name.value);
+            name.value = '';
+        });
+    </script>
+</body>
+</html>
