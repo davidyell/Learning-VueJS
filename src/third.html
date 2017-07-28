@@ -19,18 +19,19 @@
         </form>
     </div>
 
-    <script type="text/javascript">
+    <script>
         var app = new Vue({
             el: '#example',
             data: {
                 names: ['Joe', 'John', 'Jack', 'Jenette', 'Jenny']
+            },
+            mounted() { // When everything is ready to go!
+                document.querySelector('#add-name').addEventListener('click', () => {
+                    var name = document.querySelector('#name-to-add');
+                    app.names.push(name.value);
+                    name.value = '';
+                });
             }
-        });
-
-        document.querySelector('#add-name').addEventListener('click', () => {
-            var name = document.querySelector('#name-to-add');
-            app.names.push(name.value);
-            name.value = '';
         });
     </script>
 </body>
