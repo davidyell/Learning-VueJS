@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twelth episode</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.4/css/bulma.min.css">
+    <style type="text/css">
+        html {
+            padding-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="example" class="container">
+        <coupon v-on:applied="onCouponApplied"></coupon>
+
+        <h1 v-if="couponApplied">You used a coupon!</h1>
+    </div>
+
+    <script type="text/javascript" src="../webroot/js/vue.js"></script>
+    <script type="text/javascript" src="twelth.js"></script>
+</body>
+</html>
