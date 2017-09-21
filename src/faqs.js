@@ -3,7 +3,7 @@ Vue.component('faqs', {
     template: `
     <div id="faqs">
         <ul class="list-group" id="faqs-list">
-            <li class="list-group-item" v-for="(faq, index) in faqs">
+            <li class="list-group-item" v-for="(faq, index) in faqs" v-bind:data-id="faq.id">
                 <div class="read" v-if="!faq.isUpdate">
                     <span class="glyphicon glyphicon-remove pull-right" v-on:click="remove" v-bind:data-id="faq.id" v-bind:data-index="index"></span>
                     <span class="glyphicon glyphicon-pencil pull-right" v-on:click="update" v-bind:data-id="faq.id" v-bind:data-index="index"></span>
@@ -47,11 +47,14 @@ Vue.component('faqs', {
                 question: "",
                 answer: "",
                 isUpdate: false
-            }
+            },
+            sortorder: []
         }
     },
     methods: {
         create(event) {
+            // -> Would ajax to remote data store to save
+
             // Clone the object instead of passing by reference
             let faq = JSON.parse(JSON.stringify(this.newFaq));
             this.faqs.push(faq);
@@ -63,11 +66,29 @@ Vue.component('faqs', {
             this.faqs[event.target.dataset.index].isUpdate = true;
         },
         save(event) {
+            // -> Would ajax to remote data store to save
             this.faqs[event.target.dataset.index].isUpdate = false;
         },
         remove(event) {
+            // -> Would ajax to remote data store to delete
             this.faqs.splice(event.target.dataset.index, 1);
         }
+    },
+    mounted() {
+        let component = this;
+
+        Sortable.create(document.getElementById("faqs-list"), {
+            onSort: function (event) {
+                let result = [],
+                    items = event.to.children;
+
+                for (let i = 0; i < items.length; i++) {
+                    result.push(items[i].dataset.id);
+                }
+
+                component.sortorder = result;
+            }
+        });
     }
 });
 

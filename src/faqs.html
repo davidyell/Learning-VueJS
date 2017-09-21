@@ -5,6 +5,7 @@
     <title>FAQs</title>
 
     <script type="text/javascript" src="../webroot/js/vue.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- Latest compiled and minified CSS -->
@@ -15,6 +16,19 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+        #faqs-list .sortable-ghost {
+            background-color: cornsilk;
+        }
+        #faqs-list li {
+            cursor: move;
+        }
+        #faqs-list li span.glyphicon {
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -31,6 +45,8 @@
     </div>
 </div>
 
+<script src="https://unpkg.com/sortablejs@1.6.1/Sortable.js"></script>
+<script src="https://unpkg.com/vuedraggable@latest"></script>
 <script type="text/javascript" src="faqs.js"></script>
 </body>
 </html>
